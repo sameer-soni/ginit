@@ -1,3 +1,4 @@
+// Note: Only support simple relative paths like 'file.txt' — no './' or '../' or absolute paths for now.
 package main
 
 import (
@@ -32,7 +33,12 @@ func main() {
 	case "init":
 		commands.InitCommand()
 	case "hash-object":
-		commands.HashObjectCommand(flag, file)
+		var output string = commands.HashObjectCommand(flag, file)
+		fmt.Println("Hash: ", output)
+	case "cat-file":
+		commands.CatFileCommand(flag, file) // file = hashid here
+	case "add":
+		commands.AddCommand(file)
 	default:
 		fmt.Println("Unknown command: ", command)
 	}
