@@ -39,6 +39,8 @@ func main() {
 		commands.CatFileCommand(flag, file) // file = hashid here
 	case "add":
 		commands.AddCommand(file)
+	case "status":
+		commands.StatusCommand()
 	default:
 		fmt.Println("Unknown command: ", command)
 	}

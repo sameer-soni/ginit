@@ -39,6 +39,13 @@ func InitCommand() {
 			}
 		}
 
+		indexFile, err := os.Create(cwd + "/.ginit/index")
+		if err != nil {
+			fmt.Println("Error creating index file:", err)
+			return
+		}
+		defer indexFile.Close()
+
 		file, err := os.Create(cwd + "/.ginit/HEAD")
 		if err != nil {
 			fmt.Println("Error creating HEAD file:", err)
